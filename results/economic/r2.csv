@@ -1,0 +1,6 @@
+explain MFD rank with,avg_monthly_R2
+mean (linear),0.2836503236678059
+mean (cubic),0.33365468884716143
+mean (20 bins),0.3397943861823851
+12 controls (linear),0.38110612699482127
+12 controls + mean (20 bins),0.5766368096364355

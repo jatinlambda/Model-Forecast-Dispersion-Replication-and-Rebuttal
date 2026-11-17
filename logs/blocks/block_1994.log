@@ -1,0 +1,17 @@
+Extension for Scikit-learn* enabled (https://github.com/uxlfoundation/scikit-learn-intelex)
+Forecast months: 1994-08-31 .. 1995-07-31 (12), training from 1984-08-31, K=100 investors
+02:06:14 fitting block 1994-08-31 on 120 months, 339,859 obs
+    fit done in 129s
+    1994-08-31: 3,636 stocks
+    1994-09-30: 3,674 stocks
+    1994-10-31: 3,671 stocks
+    1994-11-30: 3,622 stocks
+    1994-12-30: 3,553 stocks
+    1995-01-31: 3,610 stocks
+    1995-02-28: 3,667 stocks
+    1995-03-31: 3,664 stocks
+    1995-04-28: 3,708 stocks
+    1995-05-31: 3,749 stocks
+    1995-06-30: 3,868 stocks
+    1995-07-31: 3,960 stocks
+Saved 44,382 stock-months to data/mfd_full/mfd.csv and mfd_quantiles.pq

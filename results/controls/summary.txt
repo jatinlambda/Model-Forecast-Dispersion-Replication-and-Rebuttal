@@ -1,0 +1,37 @@
+Common sample: stock-months with all 12 paper controls, 1976-08..2022-11, 1,044,803 rows; ridge coverage 100.0%, authors' MFD 94.0%
+
+Average monthly Spearman correlations
+        std  mean  ridge  std_auth  mean_auth
+std    1.00 -0.40  -0.21      0.90      -0.39
+mean  -0.40  1.00   0.49     -0.39       0.95
+ridge -0.21  0.49   1.00     -0.21       0.47
+
+=== our MFD: MFD slope as controls are added (% per month per 1 SD, NW t) ===
+  paper 12 controls                      MFD -0.196 (t -5.47)   [556 mo, N~1,879]
+  paper 12, 1976-2016 sample             MFD -0.191 (t -5.85)   [485 mo, N~1,738]
+  + mispricing score (1976-2016)         MFD -0.161 (t -5.07)   MISP -0.222 (t -6.10)   [485 mo, N~1,738]
+  + volatility/distress block (12)       MFD -0.179 (t -4.79)   [556 mo, N~1,879]
+  + all 153 characteristics (linear)     MFD -0.111 (t -3.61)   [556 mo, N~1,879]
+  + ridge forecast                       MFD -0.135 (t -3.80)   ridge +0.550 (t +13.75)   [556 mo, N~1,879]
+  + RF mean forecast                     MFD -0.006 (t -0.13)   mean +0.472 (t +9.12)   [556 mo, N~1,879]
+  + ridge + RF mean                      MFD -0.073 (t -1.71)   ridge +0.488 (t +13.25)  mean +0.204 (t +4.92)   [556 mo, N~1,879]
+
+=== authors' MFD: MFD slope as controls are added (% per month per 1 SD, NW t) ===
+  paper 12 controls                      MFD -0.206 (t -5.50)   [556 mo, N~1,766]
+  paper 12, 1976-2016 sample             MFD -0.186 (t -5.87)   [485 mo, N~1,738]
+  + mispricing score (1976-2016)         MFD -0.161 (t -5.20)   MISP -0.221 (t -6.09)   [485 mo, N~1,738]
+  + volatility/distress block (12)       MFD -0.193 (t -4.90)   [556 mo, N~1,766]
+  + all 153 characteristics (linear)     MFD -0.143 (t -3.66)   [556 mo, N~1,766]
+  + ridge forecast                       MFD -0.140 (t -3.79)   ridge +0.556 (t +13.95)   [556 mo, N~1,766]
+  + RF mean forecast                     MFD -0.020 (t -0.40)   mean_auth +0.483 (t +9.38)   [556 mo, N~1,766]
+  + ridge + RF mean                      MFD -0.083 (t -1.84)   ridge +0.490 (t +12.80)  mean_auth +0.218 (t +5.09)   [556 mo, N~1,766]
+
+=== Ridge forecast as a predictor (1976-08..2022-11) ===
+  ridge + 12 controls              ridge +0.567 (t +14.21)
+  ridge + RF mean + 12 controls    ridge +0.497 (t +12.91)  mean +0.194 (t +5.44)
+
+=== MFD high-minus-low (Q5-Q1) within ridge-forecast quintiles, averaged over quintiles ===
+  our MFD       [VW] spread -0.43 (t -2.33)   FF6 alpha -0.26 (t -1.99)
+  our MFD       [EW] spread -0.48 (t -2.78)   FF6 alpha -0.26 (t -2.35)
+  authors' MFD  [VW] spread -0.47 (t -2.72)   FF6 alpha -0.29 (t -2.38)
+  authors' MFD  [EW] spread -0.48 (t -3.00)   FF6 alpha -0.23 (t -2.50)

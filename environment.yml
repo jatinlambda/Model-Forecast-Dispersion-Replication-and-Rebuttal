@@ -1,0 +1,31 @@
+# Conda env for the MFD optimist/pessimist extension.
+# Core versions match the authors' uv.lock (Python 3.10 resolution).
+name: mfd
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy=2.2.6
+  - pandas=2.3.3
+  - scipy=1.15.*          # 1.15.3 (uv.lock) not on conda-forge
+  - scikit-learn=1.7.2
+  - scikit-learn-intelex=2025.10.0
+  - xgboost=3.1.3
+  - pyarrow=22.0.0
+  - statsmodels=0.14.6
+  - linearmodels=7.0
+  - joblib
+  - openpyxl
+  - seaborn
+  - matplotlib
+  - pandas-datareader
+  - requests
+  - py7zr
+  - multivolumefile
+  - ipykernel
+  - sqlalchemy             # wrds deps (wrds itself pins pandas<2.3,
+  - psycopg2               #  so it is pip-installed with --no-deps below)
+  - pip
+  - pip:
+      - pylatex>=1.4.2
+# after creating:  conda run -n mfd pip install --no-deps wrds==3.5.0

@@ -1,0 +1,46 @@
+Extension for Scikit-learn* enabled (https://github.com/uxlfoundation/scikit-learn-intelex)
+Forecast months: 1983-08-31 .. 1990-07-31 (84), training from 1973-08-31, K=100 investors
+01:52:35 fitting block 1983-08-31 on 120 months, 324,308 obs
+    fit done in 133s
+    1983-08-31: 3,307 stocks
+    1983-09-30: 3,303 stocks
+    1983-10-31: 3,257 stocks
+    1983-11-30: 3,304 stocks
+    1983-12-30: 3,308 stocks
+    1984-01-31: 3,327 stocks
+    1984-02-29: 3,259 stocks
+    1984-03-30: 3,245 stocks
+    1984-04-30: 3,174 stocks
+    1984-05-31: 3,095 stocks
+    1984-06-29: 3,086 stocks
+    1984-07-31: 2,972 stocks
+01:55:23 fitting block 1984-08-31 on 120 months, 331,118 obs
+    fit done in 141s
+    1984-08-31: 3,055 stocks
+    1984-09-28: 3,017 stocks
+    1984-10-31: 2,964 stocks
+    1984-11-30: 2,868 stocks
+    1984-12-31: 2,849 stocks
+    1985-01-31: 2,985 stocks
+    1985-02-28: 3,006 stocks
+    1985-03-29: 2,980 stocks
+    1985-04-30: 2,930 stocks
+    1985-05-31: 2,910 stocks
+    1985-06-28: 2,873 stocks
+    1985-07-31: 2,901 stocks
+01:58:17 fitting block 1985-08-30 on 120 months, 339,908 obs
+    fit done in 137s
+    1985-08-30: 2,897 stocks
+    1985-09-30: 2,808 stocks
+    1985-10-31: 2,821 stocks
+    1985-11-29: 2,852 stocks
+    1985-12-31: 2,860 stocks
+    1986-01-31: 2,892 stocks
+    1986-02-28: 2,938 stocks
+    1986-03-31: 2,982 stocks
+    1986-04-30: 3,017 stocks
+    1986-05-30: 3,067 stocks
+    1986-06-30: 3,097 stocks
+    1986-07-31: 3,019 stocks
+02:01:06 fitting block 1986-08-29 on 120 months, 344,542 obs
+/tmp/tmpzno_zlv6: line 3: 13934 Terminated              python -I -u programs/01_run_mfd/construct_mfd.py --n-investors 100 --n-estimators 2000 --n-jobs 4 --out data/mfd_full --test-start 1983-08 --test-end 1990-07

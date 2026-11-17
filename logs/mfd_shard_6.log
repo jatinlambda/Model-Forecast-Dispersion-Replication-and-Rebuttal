@@ -1,0 +1,47 @@
+Extension for Scikit-learn* enabled (https://github.com/uxlfoundation/scikit-learn-intelex)
+Forecast months: 2018-08-31 .. 2025-07-31 (84), training from 2008-08-29, K=100 investors
+01:52:35 fitting block 2018-08-31 on 120 months, 289,887 obs
+    fit done in 119s
+    2018-08-31: 2,514 stocks
+    2018-09-28: 2,530 stocks
+    2018-10-31: 2,470 stocks
+    2018-11-30: 2,436 stocks
+    2018-12-31: 2,335 stocks
+    2019-01-31: 2,398 stocks
+    2019-02-28: 2,422 stocks
+    2019-03-29: 2,430 stocks
+    2019-04-30: 2,441 stocks
+    2019-05-31: 2,387 stocks
+    2019-06-28: 2,432 stocks
+    2019-07-31: 2,415 stocks
+01:55:00 fitting block 2019-08-30 on 120 months, 293,408 obs
+    fit done in 118s
+    2019-08-30: 2,376 stocks
+    2019-09-30: 2,373 stocks
+    2019-10-31: 2,373 stocks
+    2019-11-29: 2,373 stocks
+    2019-12-31: 2,417 stocks
+    2020-01-31: 2,373 stocks
+    2020-02-28: 2,321 stocks
+    2020-03-31: 2,123 stocks
+    2020-04-30: 2,249 stocks
+    2020-05-29: 2,298 stocks
+    2020-06-30: 2,350 stocks
+    2020-07-31: 2,392 stocks
+01:57:22 fitting block 2020-08-31 on 120 months, 292,699 obs
+    fit done in 117s
+    2020-08-31: 2,435 stocks
+    2020-09-30: 2,443 stocks
+    2020-10-30: 2,458 stocks
+    2020-11-30: 2,597 stocks
+    2020-12-31: 2,748 stocks
+    2021-01-29: 2,790 stocks
+    2021-02-26: 2,887 stocks
+    2021-03-31: 2,913 stocks
+    2021-04-30: 2,901 stocks
+    2021-05-28: 2,940 stocks
+    2021-06-30: 3,017 stocks
+    2021-07-30: 3,014 stocks
+01:59:47 fitting block 2021-08-31 on 120 months, 296,027 obs
+/tmp/tmpg4lq_svd: line 3: 13962 Killed                  python -I -u programs/01_run_mfd/construct_mfd.py --n-investors 100 --n-estimators 2000 --n-jobs 4 --out data/mfd_full --test-start 2018-08 --test-end 2025-07
+ERROR conda.cli.main_run:execute(148): `conda run python -I -u programs/01_run_mfd/construct_mfd.py --n-investors 100 --n-estimators 2000 --n-jobs 4 --out data/mfd_full --test-start 2018-08 --test-end 2025-07` failed. (See above for error)

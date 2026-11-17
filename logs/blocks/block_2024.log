@@ -1,0 +1,17 @@
+Extension for Scikit-learn* enabled (https://github.com/uxlfoundation/scikit-learn-intelex)
+Forecast months: 2024-08-30 .. 2025-07-31 (12), training from 2014-08-29, K=100 investors
+02:20:44 fitting block 2024-08-30 on 120 months, 303,523 obs
+    fit done in 60s
+    2024-08-30: 2,431 stocks
+    2024-09-30: 2,428 stocks
+    2024-10-31: 2,456 stocks
+    2024-11-29: 2,477 stocks
+    2024-12-31: 2,464 stocks
+    2025-01-31: 2,435 stocks
+    2025-02-28: 2,379 stocks
+    2025-03-31: 2,323 stocks
+    2025-04-30: 2,311 stocks
+    2025-05-30: 2,337 stocks
+    2025-06-30: 2,410 stocks
+    2025-07-31: 2,426 stocks
+Saved 28,877 stock-months to data/mfd_full/mfd.csv and mfd_quantiles.pq

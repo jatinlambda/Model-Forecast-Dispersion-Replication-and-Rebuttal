@@ -1,0 +1,695 @@
+sklearnex not available or disabled; using standard scikit-learn.
+Forecast months: 1976-08-31 .. 2025-11-28 (592), training from 1966-08-31, K=100 investors
+03:56:12 fitting block 1976-08-31 on 120 months, 255,077 obs
+    fit done in 14s
+    1976-08-31: 2,614 stocks
+    1976-09-30: 2,615 stocks
+    1976-10-29: 2,573 stocks
+    1976-11-30: 2,584 stocks
+    1976-12-31: 2,656 stocks
+    1977-01-31: 2,705 stocks
+    1977-02-28: 2,688 stocks
+    1977-03-31: 2,690 stocks
+    1977-04-29: 2,696 stocks
+    1977-05-31: 2,675 stocks
+    1977-06-30: 2,728 stocks
+    1977-07-29: 2,729 stocks
+03:56:29 fitting block 1977-08-31 on 120 months, 266,660 obs
+    fit done in 14s
+    1977-08-31: 2,703 stocks
+    1977-09-30: 2,692 stocks
+    1977-10-31: 2,669 stocks
+    1977-11-30: 2,720 stocks
+    1977-12-30: 2,726 stocks
+    1978-01-31: 2,687 stocks
+    1978-02-28: 2,709 stocks
+    1978-03-31: 2,761 stocks
+    1978-04-28: 2,841 stocks
+    1978-05-31: 2,888 stocks
+    1978-06-30: 2,863 stocks
+    1978-07-31: 2,874 stocks
+03:56:44 fitting block 1978-08-31 on 120 months, 277,727 obs
+    fit done in 15s
+    1978-08-31: 2,954 stocks
+    1978-09-29: 2,953 stocks
+    1978-10-31: 2,672 stocks
+    1978-11-30: 2,699 stocks
+    1978-12-29: 2,676 stocks
+    1979-01-31: 2,768 stocks
+    1979-02-28: 2,724 stocks
+    1979-03-30: 2,772 stocks
+    1979-04-30: 2,787 stocks
+    1979-05-31: 2,772 stocks
+    1979-06-29: 2,779 stocks
+    1979-07-31: 2,771 stocks
+03:57:00 fitting block 1979-08-31 on 120 months, 288,288 obs
+    fit done in 15s
+    1979-08-31: 2,825 stocks
+    1979-09-28: 2,811 stocks
+    1979-10-31: 2,694 stocks
+    1979-11-30: 2,710 stocks
+    1979-12-31: 2,763 stocks
+    1980-01-31: 2,843 stocks
+    1980-02-29: 2,826 stocks
+    1980-03-31: 2,603 stocks
+    1980-04-30: 2,604 stocks
+    1980-05-30: 2,655 stocks
+    1980-06-30: 2,687 stocks
+    1980-07-31: 2,779 stocks
+03:57:16 fitting block 1980-08-29 on 120 months, 298,737 obs
+    fit done in 16s
+    1980-08-29: 2,831 stocks
+    1980-09-30: 2,884 stocks
+    1980-10-31: 2,920 stocks
+    1980-11-28: 2,957 stocks
+    1980-12-31: 2,925 stocks
+    1981-01-30: 2,929 stocks
+    1981-02-27: 2,911 stocks
+    1981-03-31: 2,975 stocks
+    1981-04-30: 3,018 stocks
+    1981-05-29: 3,048 stocks
+    1981-06-30: 3,031 stocks
+    1981-07-31: 3,004 stocks
+03:57:34 fitting block 1981-08-31 on 120 months, 312,051 obs
+    fit done in 17s
+    1981-08-31: 2,918 stocks
+    1981-09-30: 2,783 stocks
+    1981-10-30: 2,858 stocks
+    1981-11-30: 2,861 stocks
+    1981-12-31: 2,822 stocks
+    1982-01-29: 2,807 stocks
+    1982-02-26: 2,735 stocks
+    1982-03-31: 2,697 stocks
+    1982-04-30: 2,728 stocks
+    1982-05-28: 2,699 stocks
+    1982-06-30: 2,620 stocks
+    1982-07-30: 2,588 stocks
+03:57:53 fitting block 1982-08-31 on 120 months, 322,316 obs
+    fit done in 17s
+    1982-08-31: 2,602 stocks
+    1982-09-30: 2,611 stocks
+    1982-10-29: 2,713 stocks
+    1982-11-30: 2,831 stocks
+    1982-12-31: 2,847 stocks
+    1983-01-31: 2,943 stocks
+    1983-02-28: 2,993 stocks
+    1983-03-31: 3,048 stocks
+    1983-04-29: 3,104 stocks
+    1983-05-31: 3,225 stocks
+    1983-06-30: 3,312 stocks
+    1983-07-29: 3,326 stocks
+03:58:12 fitting block 1983-08-31 on 120 months, 324,308 obs
+    fit done in 49s
+    1983-08-31: 3,307 stocks
+    1983-09-30: 3,303 stocks
+    1983-10-31: 3,257 stocks
+    1983-11-30: 3,304 stocks
+    1983-12-30: 3,308 stocks
+    1984-01-31: 3,327 stocks
+    1984-02-29: 3,259 stocks
+    1984-03-30: 3,245 stocks
+    1984-04-30: 3,174 stocks
+    1984-05-31: 3,095 stocks
+    1984-06-29: 3,086 stocks
+    1984-07-31: 2,972 stocks
+03:59:03 fitting block 1984-08-31 on 120 months, 331,118 obs
+    fit done in 29s
+    1984-08-31: 3,055 stocks
+    1984-09-28: 3,017 stocks
+    1984-10-31: 2,964 stocks
+    1984-11-30: 2,868 stocks
+    1984-12-31: 2,849 stocks
+    1985-01-31: 2,985 stocks
+    1985-02-28: 3,006 stocks
+    1985-03-29: 2,980 stocks
+    1985-04-30: 2,930 stocks
+    1985-05-31: 2,910 stocks
+    1985-06-28: 2,873 stocks
+    1985-07-31: 2,901 stocks
+03:59:34 fitting block 1985-08-30 on 120 months, 339,908 obs
+    fit done in 19s
+    1985-08-30: 2,897 stocks
+    1985-09-30: 2,808 stocks
+    1985-10-31: 2,821 stocks
+    1985-11-29: 2,852 stocks
+    1985-12-31: 2,860 stocks
+    1986-01-31: 2,892 stocks
+    1986-02-28: 2,938 stocks
+    1986-03-31: 2,982 stocks
+    1986-04-30: 3,017 stocks
+    1986-05-30: 3,067 stocks
+    1986-06-30: 3,097 stocks
+    1986-07-31: 3,019 stocks
+03:59:54 fitting block 1986-08-29 on 120 months, 344,542 obs
+    fit done in 38s
+    1986-08-29: 3,004 stocks
+    1986-09-30: 2,937 stocks
+    1986-10-31: 2,960 stocks
+    1986-11-28: 2,952 stocks
+    1986-12-31: 2,882 stocks
+    1987-01-30: 2,995 stocks
+    1987-02-27: 3,094 stocks
+    1987-03-31: 3,123 stocks
+    1987-04-30: 3,107 stocks
+    1987-05-29: 3,114 stocks
+    1987-06-30: 3,154 stocks
+    1987-07-31: 3,197 stocks
+04:00:34 fitting block 1987-08-31 on 120 months, 349,108 obs
+    fit done in 20s
+    1987-08-31: 3,188 stocks
+    1987-09-30: 3,188 stocks
+    1987-10-30: 2,639 stocks
+    1987-11-30: 2,498 stocks
+    1987-12-31: 2,535 stocks
+    1988-01-29: 2,593 stocks
+    1988-02-29: 2,656 stocks
+    1988-03-31: 2,717 stocks
+    1988-04-29: 2,704 stocks
+    1988-05-31: 2,663 stocks
+    1988-06-30: 2,708 stocks
+    1988-07-29: 2,691 stocks
+04:00:56 fitting block 1988-08-31 on 120 months, 348,755 obs
+    fit done in 20s
+    1988-08-31: 2,648 stocks
+    1988-09-30: 2,641 stocks
+    1988-10-31: 2,598 stocks
+    1988-11-30: 2,526 stocks
+    1988-12-30: 2,542 stocks
+    1989-01-31: 2,570 stocks
+    1989-02-28: 2,567 stocks
+    1989-03-31: 2,572 stocks
+    1989-04-28: 2,586 stocks
+    1989-05-31: 2,590 stocks
+    1989-06-30: 2,558 stocks
+    1989-07-31: 2,571 stocks
+04:01:18 fitting block 1989-08-31 on 120 months, 346,397 obs
+    fit done in 19s
+    1989-08-31: 2,559 stocks
+    1989-09-29: 2,561 stocks
+    1989-10-31: 2,496 stocks
+    1989-11-30: 2,477 stocks
+    1989-12-29: 2,468 stocks
+    1990-01-31: 2,365 stocks
+    1990-02-28: 2,377 stocks
+    1990-03-30: 2,416 stocks
+    1990-04-30: 2,367 stocks
+    1990-05-31: 2,425 stocks
+    1990-06-29: 2,456 stocks
+    1990-07-31: 2,408 stocks
+04:01:38 fitting block 1990-08-31 on 120 months, 342,972 obs
+    fit done in 31s
+    1990-08-31: 2,273 stocks
+    1990-09-28: 2,165 stocks
+    1990-10-31: 2,059 stocks
+    1990-11-30: 2,081 stocks
+    1990-12-31: 2,062 stocks
+    1991-01-31: 2,139 stocks
+    1991-02-28: 2,279 stocks
+    1991-03-28: 2,363 stocks
+    1991-04-30: 2,413 stocks
+    1991-05-31: 2,456 stocks
+    1991-06-28: 2,458 stocks
+    1991-07-31: 2,483 stocks
+04:02:22 fitting block 1991-08-30 on 120 months, 334,770 obs
+    fit done in 31s
+    1991-08-30: 2,523 stocks
+    1991-09-30: 2,534 stocks
+    1991-10-31: 2,560 stocks
+    1991-11-29: 2,572 stocks
+    1991-12-31: 2,609 stocks
+    1992-01-31: 2,771 stocks
+    1992-02-28: 2,822 stocks
+    1992-03-31: 2,890 stocks
+    1992-04-30: 2,855 stocks
+    1992-05-29: 2,876 stocks
+    1992-06-30: 2,794 stocks
+    1992-07-31: 2,811 stocks
+04:03:01 fitting block 1992-08-31 on 120 months, 334,271 obs
+    fit done in 31s
+    1992-08-31: 2,792 stocks
+    1992-09-30: 2,793 stocks
+    1992-10-30: 2,854 stocks
+    1992-11-30: 2,968 stocks
+    1992-12-31: 3,046 stocks
+    1993-01-29: 3,114 stocks
+    1993-02-26: 3,100 stocks
+    1993-03-31: 3,169 stocks
+    1993-04-30: 3,152 stocks
+    1993-05-28: 3,221 stocks
+    1993-06-30: 3,267 stocks
+    1993-07-30: 3,302 stocks
+04:03:33 fitting block 1993-08-31 on 120 months, 335,494 obs
+    fit done in 29s
+    1993-08-31: 3,380 stocks
+    1993-09-30: 3,447 stocks
+    1993-10-29: 3,548 stocks
+    1993-11-30: 3,559 stocks
+    1993-12-31: 3,608 stocks
+    1994-01-31: 3,679 stocks
+    1994-02-28: 3,700 stocks
+    1994-03-31: 3,661 stocks
+    1994-04-29: 3,623 stocks
+    1994-05-31: 3,612 stocks
+    1994-06-30: 3,586 stocks
+    1994-07-29: 3,599 stocks
+04:04:14 fitting block 1994-08-31 on 120 months, 339,859 obs
+    fit done in 32s
+    1994-08-31: 3,636 stocks
+    1994-09-30: 3,674 stocks
+    1994-10-31: 3,671 stocks
+    1994-11-30: 3,622 stocks
+    1994-12-30: 3,553 stocks
+    1995-01-31: 3,610 stocks
+    1995-02-28: 3,667 stocks
+    1995-03-31: 3,664 stocks
+    1995-04-28: 3,708 stocks
+    1995-05-31: 3,749 stocks
+    1995-06-30: 3,868 stocks
+    1995-07-31: 3,960 stocks
+04:04:56 fitting block 1995-08-31 on 120 months, 348,903 obs
+    fit done in 34s
+    1995-08-31: 4,020 stocks
+    1995-09-29: 4,055 stocks
+    1995-10-31: 3,956 stocks
+    1995-11-30: 3,979 stocks
+    1995-12-29: 4,021 stocks
+    1996-01-31: 4,071 stocks
+    1996-02-29: 4,118 stocks
+    1996-03-29: 4,216 stocks
+    1996-04-30: 4,344 stocks
+    1996-05-31: 4,512 stocks
+    1996-06-28: 4,482 stocks
+    1996-07-31: 4,320 stocks
+04:05:32 fitting block 1996-08-30 on 120 months, 363,747 obs
+    fit done in 29s
+    1996-08-30: 4,374 stocks
+    1996-09-30: 4,418 stocks
+    1996-10-31: 4,355 stocks
+    1996-11-29: 4,414 stocks
+    1996-12-31: 4,376 stocks
+    1997-01-31: 4,497 stocks
+    1997-02-28: 4,462 stocks
+    1997-03-31: 4,335 stocks
+    1997-04-30: 4,234 stocks
+    1997-05-30: 4,329 stocks
+    1997-06-30: 4,363 stocks
+    1997-07-31: 4,406 stocks
+04:06:12 fitting block 1997-08-29 on 120 months, 379,791 obs
+    fit done in 36s
+    1997-08-29: 4,462 stocks
+    1997-09-30: 4,592 stocks
+    1997-10-31: 4,563 stocks
+    1997-11-28: 4,534 stocks
+    1997-12-31: 4,387 stocks
+    1998-01-30: 4,363 stocks
+    1998-02-27: 4,445 stocks
+    1998-03-31: 4,492 stocks
+    1998-04-30: 4,517 stocks
+    1998-05-29: 4,456 stocks
+    1998-06-30: 4,340 stocks
+    1998-07-31: 4,227 stocks
+04:06:58 fitting block 1998-08-31 on 120 months, 400,389 obs
+    fit done in 34s
+    1998-08-31: 3,782 stocks
+    1998-09-30: 3,788 stocks
+    1998-10-30: 3,800 stocks
+    1998-11-30: 3,899 stocks
+    1998-12-31: 3,835 stocks
+    1999-01-29: 3,938 stocks
+    1999-02-26: 3,798 stocks
+    1999-03-31: 3,704 stocks
+    1999-04-30: 3,837 stocks
+    1999-05-28: 3,902 stocks
+    1999-06-30: 3,915 stocks
+    1999-07-30: 3,943 stocks
+04:07:33 fitting block 1999-08-31 on 120 months, 415,561 obs
+    fit done in 31s
+    1999-08-31: 3,882 stocks
+    1999-09-30: 3,816 stocks
+    1999-10-29: 3,789 stocks
+    1999-11-30: 3,938 stocks
+    1999-12-31: 4,021 stocks
+    2000-01-31: 4,087 stocks
+    2000-02-29: 4,289 stocks
+    2000-03-31: 4,238 stocks
+    2000-04-28: 3,973 stocks
+    2000-05-31: 3,800 stocks
+    2000-06-30: 3,870 stocks
+    2000-07-31: 3,816 stocks
+04:08:24 fitting block 2000-08-31 on 120 months, 433,705 obs
+    fit done in 35s
+    2000-08-31: 3,901 stocks
+    2000-09-29: 3,754 stocks
+    2000-10-31: 3,553 stocks
+    2000-11-30: 3,249 stocks
+    2000-12-29: 3,139 stocks
+    2001-01-31: 3,409 stocks
+    2001-02-28: 3,201 stocks
+    2001-03-30: 3,043 stocks
+    2001-04-30: 3,069 stocks
+    2001-05-31: 3,149 stocks
+    2001-06-29: 3,139 stocks
+    2001-07-31: 3,058 stocks
+04:09:01 fitting block 2001-08-31 on 120 months, 446,138 obs
+    fit done in 23s
+    2001-08-31: 2,962 stocks
+    2001-09-28: 2,726 stocks
+    2001-10-31: 2,810 stocks
+    2001-11-30: 2,901 stocks
+    2001-12-31: 2,975 stocks
+    2002-01-31: 2,959 stocks
+    2002-02-28: 2,856 stocks
+    2002-03-28: 2,950 stocks
+    2002-04-30: 2,898 stocks
+    2002-05-31: 2,850 stocks
+    2002-06-28: 2,739 stocks
+    2002-07-31: 2,548 stocks
+04:09:26 fitting block 2002-08-30 on 120 months, 447,695 obs
+    fit done in 25s
+    2002-08-30: 2,519 stocks
+    2002-09-30: 2,387 stocks
+    2002-10-31: 2,432 stocks
+    2002-11-29: 2,553 stocks
+    2002-12-31: 2,493 stocks
+    2003-01-31: 2,464 stocks
+    2003-02-28: 2,422 stocks
+    2003-03-31: 2,410 stocks
+    2003-04-30: 2,501 stocks
+    2003-05-30: 2,663 stocks
+    2003-06-30: 2,721 stocks
+    2003-07-31: 2,799 stocks
+04:09:53 fitting block 2003-08-29 on 120 months, 441,281 obs
+    fit done in 25s
+    2003-08-29: 2,841 stocks
+    2003-09-30: 2,885 stocks
+    2003-10-31: 2,983 stocks
+    2003-11-28: 3,017 stocks
+    2003-12-31: 3,032 stocks
+    2004-01-30: 3,128 stocks
+    2004-02-27: 3,141 stocks
+    2004-03-31: 3,139 stocks
+    2004-04-30: 3,069 stocks
+    2004-05-28: 3,060 stocks
+    2004-06-30: 3,070 stocks
+    2004-07-30: 2,960 stocks
+04:10:20 fitting block 2004-08-31 on 120 months, 434,604 obs
+    fit done in 30s
+    2004-08-31: 2,930 stocks
+    2004-09-30: 2,984 stocks
+    2004-10-29: 2,990 stocks
+    2004-11-30: 3,069 stocks
+    2004-12-31: 3,129 stocks
+    2005-01-31: 3,064 stocks
+    2005-02-28: 3,071 stocks
+    2005-03-31: 3,030 stocks
+    2005-04-29: 2,911 stocks
+    2005-05-31: 2,946 stocks
+    2005-06-30: 2,978 stocks
+    2005-07-29: 3,059 stocks
+04:11:01 fitting block 2005-08-31 on 120 months, 426,383 obs
+    fit done in 37s
+    2005-08-31: 3,040 stocks
+    2005-09-30: 3,036 stocks
+    2005-10-31: 2,999 stocks
+    2005-11-30: 3,022 stocks
+    2005-12-30: 3,045 stocks
+    2006-01-31: 3,092 stocks
+    2006-02-28: 3,113 stocks
+    2006-03-31: 3,136 stocks
+    2006-04-28: 3,147 stocks
+    2006-05-31: 3,091 stocks
+    2006-06-30: 3,070 stocks
+    2006-07-31: 3,016 stocks
+04:11:51 fitting block 2006-08-31 on 120 months, 413,096 obs
+    fit done in 33s
+    2006-08-31: 3,003 stocks
+    2006-09-29: 3,017 stocks
+    2006-10-31: 3,064 stocks
+    2006-11-30: 3,079 stocks
+    2006-12-29: 3,091 stocks
+    2007-01-31: 3,086 stocks
+    2007-02-28: 3,086 stocks
+    2007-03-30: 3,082 stocks
+    2007-04-30: 3,091 stocks
+    2007-05-31: 3,101 stocks
+    2007-06-29: 3,090 stocks
+    2007-07-31: 3,041 stocks
+04:12:35 fitting block 2007-08-31 on 120 months, 397,364 obs
+    fit done in 36s
+    2007-08-31: 2,998 stocks
+    2007-09-28: 2,991 stocks
+    2007-10-31: 2,993 stocks
+    2007-11-30: 2,893 stocks
+    2007-12-31: 2,901 stocks
+    2008-01-31: 2,821 stocks
+    2008-02-29: 2,780 stocks
+    2008-03-31: 2,718 stocks
+    2008-04-30: 2,714 stocks
+    2008-05-30: 2,723 stocks
+    2008-06-30: 2,622 stocks
+    2008-07-31: 2,622 stocks
+04:13:24 fitting block 2008-08-29 on 120 months, 377,762 obs
+    fit done in 30s
+    2008-08-29: 2,599 stocks
+    2008-09-30: 2,491 stocks
+    2008-10-31: 2,181 stocks
+    2008-11-28: 1,990 stocks
+    2008-12-31: 2,041 stocks
+    2009-01-30: 1,953 stocks
+    2009-02-27: 1,833 stocks
+    2009-03-31: 1,906 stocks
+    2009-04-30: 2,074 stocks
+    2009-05-29: 2,163 stocks
+    2009-06-30: 2,192 stocks
+    2009-07-31: 2,266 stocks
+04:14:01 fitting block 2009-08-31 on 120 months, 357,310 obs
+    fit done in 33s
+    2009-08-31: 2,318 stocks
+    2009-09-30: 2,379 stocks
+    2009-10-30: 2,321 stocks
+    2009-11-30: 2,332 stocks
+    2009-12-31: 2,387 stocks
+    2010-01-29: 2,370 stocks
+    2010-02-26: 2,397 stocks
+    2010-03-31: 2,479 stocks
+    2010-04-30: 2,530 stocks
+    2010-05-28: 2,451 stocks
+    2010-06-30: 2,369 stocks
+    2010-07-30: 2,394 stocks
+04:14:43 fitting block 2010-08-31 on 120 months, 338,518 obs
+    fit done in 34s
+    2010-08-31: 2,325 stocks
+    2010-09-30: 2,423 stocks
+    2010-10-29: 2,473 stocks
+    2010-11-30: 2,479 stocks
+    2010-12-31: 2,540 stocks
+    2011-01-31: 2,542 stocks
+    2011-02-28: 2,564 stocks
+    2011-03-31: 2,536 stocks
+    2011-04-29: 2,528 stocks
+    2011-05-31: 2,501 stocks
+    2011-06-30: 2,463 stocks
+    2011-07-29: 2,441 stocks
+04:15:29 fitting block 2011-08-31 on 120 months, 328,669 obs
+    fit done in 28s
+    2011-08-31: 2,354 stocks
+    2011-09-30: 2,247 stocks
+    2011-10-31: 2,313 stocks
+    2011-11-30: 2,284 stocks
+    2011-12-30: 2,279 stocks
+    2012-01-31: 2,336 stocks
+    2012-02-29: 2,357 stocks
+    2012-03-30: 2,377 stocks
+    2012-04-30: 2,370 stocks
+    2012-05-31: 2,301 stocks
+    2012-06-29: 2,324 stocks
+    2012-07-31: 2,295 stocks
+04:16:16 fitting block 2012-08-31 on 120 months, 322,332 obs
+    fit done in 31s
+    2012-08-31: 2,310 stocks
+    2012-09-28: 2,334 stocks
+    2012-10-31: 2,311 stocks
+    2012-11-30: 2,301 stocks
+    2012-12-31: 2,294 stocks
+    2013-01-31: 2,346 stocks
+    2013-02-28: 2,320 stocks
+    2013-03-28: 2,342 stocks
+    2013-04-30: 2,350 stocks
+    2013-05-31: 2,389 stocks
+    2013-06-28: 2,395 stocks
+    2013-07-31: 2,449 stocks
+04:16:57 fitting block 2013-08-30 on 120 months, 320,109 obs
+    fit done in 30s
+    2013-08-30: 2,442 stocks
+    2013-09-30: 2,486 stocks
+    2013-10-31: 2,479 stocks
+    2013-11-29: 2,510 stocks
+    2013-12-31: 2,540 stocks
+    2014-01-31: 2,567 stocks
+    2014-02-28: 2,598 stocks
+    2014-03-31: 2,591 stocks
+    2014-04-30: 2,577 stocks
+    2014-05-30: 2,572 stocks
+    2014-06-30: 2,619 stocks
+    2014-07-31: 2,611 stocks
+04:17:45 fitting block 2014-08-29 on 120 months, 314,376 obs
+    fit done in 32s
+    2014-08-29: 2,633 stocks
+    2014-09-30: 2,589 stocks
+    2014-10-31: 2,580 stocks
+    2014-11-28: 2,576 stocks
+    2014-12-31: 2,585 stocks
+    2015-01-30: 2,558 stocks
+    2015-02-27: 2,574 stocks
+    2015-03-31: 2,558 stocks
+    2015-04-30: 2,581 stocks
+    2015-05-29: 2,577 stocks
+    2015-06-30: 2,591 stocks
+    2015-07-31: 2,546 stocks
+04:18:35 fitting block 2015-08-31 on 120 months, 309,163 obs
+    fit done in 31s
+    2015-08-31: 2,530 stocks
+    2015-09-30: 2,456 stocks
+    2015-10-30: 2,486 stocks
+    2015-11-30: 2,489 stocks
+    2015-12-31: 2,459 stocks
+    2016-01-29: 2,362 stocks
+    2016-02-29: 2,356 stocks
+    2016-03-31: 2,399 stocks
+    2016-04-29: 2,428 stocks
+    2016-05-31: 2,416 stocks
+    2016-06-30: 2,427 stocks
+    2016-07-29: 2,464 stocks
+04:19:23 fitting block 2016-08-31 on 120 months, 301,628 obs
+    fit done in 23s
+    2016-08-31: 2,466 stocks
+    2016-09-30: 2,485 stocks
+    2016-10-31: 2,435 stocks
+    2016-11-30: 2,461 stocks
+    2016-12-30: 2,451 stocks
+    2017-01-31: 2,456 stocks
+    2017-02-28: 2,442 stocks
+    2017-03-31: 2,444 stocks
+    2017-04-28: 2,438 stocks
+    2017-05-31: 2,420 stocks
+    2017-06-30: 2,456 stocks
+    2017-07-31: 2,433 stocks
+04:20:01 fitting block 2017-08-31 on 120 months, 294,184 obs
+    fit done in 30s
+    2017-08-31: 2,408 stocks
+    2017-09-29: 2,436 stocks
+    2017-10-31: 2,416 stocks
+    2017-11-30: 2,443 stocks
+    2017-12-29: 2,456 stocks
+    2018-01-31: 2,470 stocks
+    2018-02-28: 2,448 stocks
+    2018-03-29: 2,434 stocks
+    2018-04-30: 2,455 stocks
+    2018-05-31: 2,494 stocks
+    2018-06-29: 2,511 stocks
+    2018-07-31: 2,508 stocks
+04:20:44 fitting block 2018-08-31 on 120 months, 289,887 obs
+    fit done in 33s
+    2018-08-31: 2,514 stocks
+    2018-09-28: 2,530 stocks
+    2018-10-31: 2,470 stocks
+    2018-11-30: 2,436 stocks
+    2018-12-31: 2,335 stocks
+    2019-01-31: 2,398 stocks
+    2019-02-28: 2,422 stocks
+    2019-03-29: 2,430 stocks
+    2019-04-30: 2,441 stocks
+    2019-05-31: 2,387 stocks
+    2019-06-28: 2,432 stocks
+    2019-07-31: 2,415 stocks
+04:21:34 fitting block 2019-08-30 on 120 months, 293,408 obs
+    fit done in 32s
+    2019-08-30: 2,376 stocks
+    2019-09-30: 2,373 stocks
+    2019-10-31: 2,373 stocks
+    2019-11-29: 2,373 stocks
+    2019-12-31: 2,417 stocks
+    2020-01-31: 2,373 stocks
+    2020-02-28: 2,321 stocks
+    2020-03-31: 2,123 stocks
+    2020-04-30: 2,249 stocks
+    2020-05-29: 2,298 stocks
+    2020-06-30: 2,350 stocks
+    2020-07-31: 2,392 stocks
+04:22:15 fitting block 2020-08-31 on 120 months, 292,699 obs
+    fit done in 29s
+    2020-08-31: 2,435 stocks
+    2020-09-30: 2,443 stocks
+    2020-10-30: 2,458 stocks
+    2020-11-30: 2,597 stocks
+    2020-12-31: 2,748 stocks
+    2021-01-29: 2,790 stocks
+    2021-02-26: 2,887 stocks
+    2021-03-31: 2,913 stocks
+    2021-04-30: 2,901 stocks
+    2021-05-28: 2,940 stocks
+    2021-06-30: 3,017 stocks
+    2021-07-30: 3,014 stocks
+04:22:59 fitting block 2021-08-31 on 120 months, 296,027 obs
+    fit done in 25s
+    2021-08-31: 3,046 stocks
+    2021-09-30: 3,048 stocks
+    2021-10-29: 3,076 stocks
+    2021-11-30: 3,028 stocks
+    2021-12-31: 3,037 stocks
+    2022-01-31: 2,914 stocks
+    2022-02-28: 2,887 stocks
+    2022-03-31: 2,890 stocks
+    2022-04-29: 2,770 stocks
+    2022-05-31: 2,710 stocks
+    2022-06-30: 2,584 stocks
+    2022-07-29: 2,662 stocks
+04:23:39 fitting block 2022-08-31 on 120 months, 302,842 obs
+    fit done in 34s
+    2022-08-31: 2,647 stocks
+    2022-09-30: 2,553 stocks
+    2022-10-31: 2,555 stocks
+    2022-11-30: 2,539 stocks
+    2022-12-30: 2,510 stocks
+    2023-01-31: 2,574 stocks
+    2023-02-28: 2,533 stocks
+    2023-03-31: 2,466 stocks
+    2023-04-28: 2,459 stocks
+    2023-05-31: 2,469 stocks
+    2023-06-30: 2,479 stocks
+    2023-07-31: 2,513 stocks
+04:24:27 fitting block 2023-08-31 on 120 months, 304,998 obs
+    fit done in 35s
+    2023-08-31: 2,453 stocks
+    2023-09-29: 2,411 stocks
+    2023-10-31: 2,346 stocks
+    2023-11-30: 2,382 stocks
+    2023-12-29: 2,482 stocks
+    2024-01-31: 2,431 stocks
+    2024-02-29: 2,454 stocks
+    2024-03-28: 2,465 stocks
+    2024-04-30: 2,415 stocks
+    2024-05-31: 2,430 stocks
+    2024-06-28: 2,399 stocks
+    2024-07-31: 2,449 stocks
+04:25:14 fitting block 2024-08-30 on 120 months, 303,523 obs
+    fit done in 30s
+    2024-08-30: 2,431 stocks
+    2024-09-30: 2,428 stocks
+    2024-10-31: 2,456 stocks
+    2024-11-29: 2,477 stocks
+    2024-12-31: 2,464 stocks
+    2025-01-31: 2,435 stocks
+    2025-02-28: 2,379 stocks
+    2025-03-31: 2,323 stocks
+    2025-04-30: 2,311 stocks
+    2025-05-30: 2,337 stocks
+    2025-06-30: 2,410 stocks
+    2025-07-31: 2,426 stocks
+04:25:57 fitting block 2025-08-29 on 120 months, 301,452 obs
+    fit done in 30s
+    2025-08-29: 2,488 stocks
+    2025-09-30: 2,541 stocks
+    2025-10-31: 2,523 stocks
+    2025-11-28: 2,481 stocks
+Saved 1,705,226 stock-months to data/mfd_ridge/mfd.csv and mfd_quantiles.pq

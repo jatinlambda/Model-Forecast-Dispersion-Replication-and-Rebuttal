@@ -1,0 +1,33 @@
+Extension for Scikit-learn* enabled (https://github.com/uxlfoundation/scikit-learn-intelex)
+Forecast months: 1997-08-29 .. 2004-07-30 (84), training from 1987-08-31, K=100 investors
+01:52:35 fitting block 1997-08-29 on 120 months, 379,791 obs
+    fit done in 162s
+    1997-08-29: 4,462 stocks
+    1997-09-30: 4,592 stocks
+    1997-10-31: 4,563 stocks
+    1997-11-28: 4,534 stocks
+    1997-12-31: 4,387 stocks
+    1998-01-30: 4,363 stocks
+    1998-02-27: 4,445 stocks
+    1998-03-31: 4,492 stocks
+    1998-04-30: 4,517 stocks
+    1998-05-29: 4,456 stocks
+    1998-06-30: 4,340 stocks
+    1998-07-31: 4,227 stocks
+01:56:03 fitting block 1998-08-31 on 120 months, 400,389 obs
+    fit done in 171s
+    1998-08-31: 3,782 stocks
+    1998-09-30: 3,788 stocks
+    1998-10-30: 3,800 stocks
+    1998-11-30: 3,899 stocks
+    1998-12-31: 3,835 stocks
+    1999-01-29: 3,938 stocks
+    1999-02-26: 3,798 stocks
+    1999-03-31: 3,704 stocks
+    1999-04-30: 3,837 stocks
+    1999-05-28: 3,902 stocks
+    1999-06-30: 3,915 stocks
+    1999-07-30: 3,943 stocks
+01:59:29 fitting block 1999-08-31 on 120 months, 415,561 obs
+    fit done in 197s
+/tmp/tmp4axevg6l: line 3: 13894 Terminated              python -I -u programs/01_run_mfd/construct_mfd.py --n-investors 100 --n-estimators 2000 --n-jobs 4 --out data/mfd_full --test-start 1997-08 --test-end 2004-07

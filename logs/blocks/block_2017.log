@@ -1,0 +1,17 @@
+Extension for Scikit-learn* enabled (https://github.com/uxlfoundation/scikit-learn-intelex)
+Forecast months: 2017-08-31 .. 2018-07-31 (12), training from 2007-08-31, K=100 investors
+02:19:16 fitting block 2017-08-31 on 120 months, 294,184 obs
+    fit done in 63s
+    2017-08-31: 2,408 stocks
+    2017-09-29: 2,436 stocks
+    2017-10-31: 2,416 stocks
+    2017-11-30: 2,443 stocks
+    2017-12-29: 2,456 stocks
+    2018-01-31: 2,470 stocks
+    2018-02-28: 2,448 stocks
+    2018-03-29: 2,434 stocks
+    2018-04-30: 2,455 stocks
+    2018-05-31: 2,494 stocks
+    2018-06-29: 2,511 stocks
+    2018-07-31: 2,508 stocks
+Saved 29,479 stock-months to data/mfd_full/mfd.csv and mfd_quantiles.pq

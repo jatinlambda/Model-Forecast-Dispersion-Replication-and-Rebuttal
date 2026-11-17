@@ -1,0 +1,14 @@
+# Licensed / large data (JKP, CRSP, Compustat) — not redistributable
+data/
+runs/
+results/frac_up/frac_up.pq
+*.pq
+*.parquet
+*.7z*
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/

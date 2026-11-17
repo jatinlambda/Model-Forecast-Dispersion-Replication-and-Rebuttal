@@ -1,0 +1,25 @@
+Sample: 1,705,226 stock-months, 592 months, 1976-08 to 2025-11
+
+FRAC_UP raw distribution: {'count': 1705226.0, 'mean': 0.833, 'std': 0.327, 'min': 0.0, '5%': 0.0, '25%': 0.91, '50%': 1.0, '75%': 1.0, '95%': 1.0, 'max': 1.0}
+Months where >50% of stocks have FRAC_UP==0: 14; ==1: 447; median monthly cross-sectional sd of FRAC_UP: 0.209
+
+Avg monthly Spearman correlations:
+           frac_up  frac_rel  mfd_mean    mfd
+frac_up     1.000     0.686     0.711 -0.470
+frac_rel    0.686     1.000     0.986 -0.426
+mfd_mean    0.711     0.986     1.000 -0.431
+mfd        -0.470    -0.426    -0.431  1.000 
+
+Fama-MacBeth (y = next-month excess return in %, regressors standardized; coef = % per 1 sd):
+                                spec   n_obs  n_months  avg_r2  frac_up_b  frac_up_t  mfd_mean_b  mfd_mean_t  mfd_b  mfd_t  frac_rel_b  frac_rel_t
+                         (1) FRAC_UP 1705226       592   0.001      0.470      9.267         NaN         NaN    NaN    NaN         NaN         NaN
+                          (2) + MEAN 1705226       592   0.002     -0.014     -0.300       0.602       8.396    NaN    NaN         NaN         NaN
+               (3) + MEAN + 12 ctrls 1109796       592   0.001      0.015      0.307       0.532       8.864    NaN    NaN         NaN         NaN
+         (4) + MEAN + MFD + 12 ctrls 1109796       592   0.001      0.017      0.361       0.599       8.737 -0.015 -0.286         NaN         NaN
+   (5a) MFD + 12 ctrls [paper Tab 6] 1109796       592   0.002        NaN        NaN         NaN         NaN -0.252 -6.174         NaN         NaN
+                (5b) MEAN + 12 ctrls 1109796       592   0.001        NaN        NaN       0.511      11.028    NaN    NaN         NaN         NaN
+(5) MFD + MEAN + 12 ctrls [baseline] 1109796       592   0.001        NaN        NaN       0.585      10.021 -0.028 -0.516         NaN         NaN
+      (6) FRAC_REL + MEAN + 12 ctrls 1109796       592   0.001        NaN        NaN       0.651       8.692    NaN    NaN      -0.143      -2.706
+(7) FRAC_REL + MEAN + MFD + 12 ctrls 1109796       592   0.001        NaN        NaN       0.729       9.176 -0.005 -0.107      -0.146      -2.886
+         (8) = (7) + MEAN^2 + MEAN^3 1109796       592   0.001        NaN        NaN       0.490       4.340  0.020  0.397      -0.006      -0.108
+         (9) = (4) + MEAN^2 + MEAN^3 1109796       592   0.001      0.006      0.088       0.451       5.432  0.026  0.503         NaN         NaN

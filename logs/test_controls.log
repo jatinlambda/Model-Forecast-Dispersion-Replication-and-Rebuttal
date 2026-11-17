@@ -1,0 +1,23 @@
+49 price-based, 104 accounting-based characteristics; 44 industries; 1,617,196 stock-months, 100.0% with characteristics
+controls        # |        MFD alone |       MFD | mean       mean | MFD | MFD | mean,mean2 mean | MFD,mean2 | months  N
+none            0 | -0.391 (t -5.38) | -0.025 (t -0.27) +0.639 (t +7.60) | -0.012 (t -0.13) +0.851 (t +8.74) | 556  2,908
+FF4             4 | -0.348 (t -5.75) | -0.052 (t -0.71) +0.520 (t +7.94) | -0.035 (t -0.46) +0.779 (t +8.04) | 556  2,588
+paper12        12 | -0.196 (t -5.47) | -0.006 (t -0.13) +0.472 (t +9.12) | +0.007 (t +0.14) +0.640 (t +7.42) | 556  1,879
+paper12+px     22 | -0.188 (t -5.18) | +0.001 (t +0.02) +0.470 (t +9.21) | +0.012 (t +0.26) +0.634 (t +7.44) | 556  1,876
+price49        49 | -0.271 (t -6.62) | -0.041 (t -0.75) +0.537 (t +9.65) | -0.039 (t -0.67) +0.742 (t +8.92) | 556  2,908
+/home/jlamba/projects/model_forecast_dispersion/scripts/test_miller.py:181: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d["y"] = d[ycol] * 100
+/home/jlamba/projects/model_forecast_dispersion/scripts/test_miller.py:181: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d["y"] = d[ycol] * 100
+/home/jlamba/projects/model_forecast_dispersion/scripts/test_miller.py:181: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d["y"] = d[ycol] * 100
+fund104       104 | -0.309 (t -7.07) | -0.042 (t -0.84) +0.694 (t +9.85) | -0.032 (t -0.59) +0.929 (t +10.24) | 556  2,908
+/home/jlamba/projects/model_forecast_dispersion/scripts/test_miller.py:181: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d["y"] = d[ycol] * 100
+/home/jlamba/projects/model_forecast_dispersion/scripts/test_miller.py:181: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d["y"] = d[ycol] * 100
+/home/jlamba/projects/model_forecast_dispersion/scripts/test_miller.py:181: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d["y"] = d[ycol] * 100
+all153        153 | -0.243 (t -6.21) | -0.093 (t -2.13) +0.493 (t +7.86) | -0.100 (t -2.17) +0.665 (t +7.35) | 556  2,908
+/home/jlamba/projects/model_forecast_dispersion/scripts/test_controls.py:116: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d["y"] = d["ret_exc_lead1m"] * 100

@@ -1,0 +1,25 @@
+02:11:19 21 blocks to run with 4 workers x 8 threads: 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2013 2014 2015 2016 2017 2021 2022 2023 2024
+02:13:31 block 2002 exit 0
+02:13:36 block 2000 exit 0
+02:13:39 block 2001 exit 0
+02:13:41 block 1999 exit 0
+02:15:40 block 2003 exit 0
+02:15:52 block 2004 exit 0
+02:15:55 block 2005 exit 0
+02:15:55 block 2006 exit 0
+02:17:33 block 2007 exit 0
+02:17:44 block 2010 exit 0
+02:17:46 block 2008 exit 0
+02:17:49 block 2009 exit 0
+02:19:10 block 2013 exit 0
+02:19:17 block 2015 exit 0
+02:19:18 block 2016 exit 0
+02:19:19 block 2014 exit 0
+02:20:39 block 2017 exit 0
+02:20:51 block 2021 exit 0
+02:20:53 block 2023 exit 0
+02:20:53 block 2022 exit 0
+02:22:03 block 2024 exit 0
+02:22:03 blocks finished; months on disk: 592 of 592
+Saved 1,705,226 stock-months to data/mfd_full/mfd.csv and mfd_quantiles.pq
+FINISHED
