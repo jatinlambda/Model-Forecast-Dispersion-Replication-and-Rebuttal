@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disagreement or Low Forecasts? Challenging Machine Forecast Disagreement Claims</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@400;600&display=swap">
+<style>
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; background: #0d1220; overflow: hidden; }
+#stage { position: absolute; top: 50%; left: 50%; width: 1920px; height: 1080px; transform-origin: center; }
+section { position: absolute; inset: 0; width: 1920px; height: 1080px; display: none !important; overflow: hidden; }
+section.on { display: flex !important; }
+th, td { text-align: left; padding: 10px 16px; vertical-align: top; }
+tr:not(.head) td { border-bottom: 1px solid #E2E0DA; }
+x-shape[kind="arrow-right"] { display: block; flex: 0 0 auto; clip-path: polygon(0 30%, 60% 30%, 60% 0, 100% 50%, 60% 100%, 60% 70%, 0 70%); }
+#hud { position: fixed; bottom: 12px; right: 16px; font: 14px Inter, sans-serif; color: #8792a8; user-select: none; }
+@media print {
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body { overflow: visible; background: none; height: auto; }
+  #stage { position: static; transform: none !important; width: auto; height: auto; }
+  section { position: relative; display: flex !important; page-break-after: always; break-after: page; }
+  #hud { display: none; }
+}
+/* deck stylesheet (unchanged) */
+section {
+  background: #FCFCFB;
+  color: #4A4F57;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 30px;
+  padding: 128px 128px 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  counter-increment: page;
+}
+section.tint { background: #F1F0EC; }
+section.dark { background: #15203A; color: #C9D3E3; }
+
+h1 { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 88px; font-weight: 600; line-height: 1.06; color: #16181D; }
+h2 { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 56px; font-weight: 600; line-height: 1.12; color: #16181D; }
+h3 { font-family: 'Inter', Arial, sans-serif; font-size: 32px; font-weight: 600; line-height: 1.25; color: #16181D; }
+section.dark h1, section.dark h2, section.dark h3 { color: #F4F2EC; }
+
+p { font-size: 30px; line-height: 1.4; }
+.eyebrow { font-size: 24px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #1F62B5; }
+section.dark .eyebrow { color: #8DB8F0; }
+.lead { font-size: 36px; line-height: 1.35; color: #2E3238; }
+section.dark .lead { color: #DCE3EE; }
+.small { font-size: 24px; line-height: 1.4; color: #5F636B; }
+section.dark .small { color: #AEB9CC; }
+
+.cards { display: flex; gap: 32px; }
+.card { flex: 1; background: #F1F0EC; border-radius: 16px; padding: 36px; display: flex; flex-direction: column; gap: 16px; }
+section.tint .card { background: #FCFCFB; }
+section.dark .card { background: #1F2C4B; }
+.card .body { font-size: 28px; line-height: 1.4; color: #4A4F57; }
+section.dark .card .body { color: #C9D3E3; }
+.card .big { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 72px; font-weight: 600; line-height: 1.05; color: #16181D; }
+.card .big.blue { color: #1F62B5; }
+.card .big.orange { color: #B8461A; }
+.card .label { font-size: 24px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #5F636B; }
+
+.fig { width: 1664px; height: 640px; object-fit: contain; }
+.note { font-size: 26px; line-height: 1.4; color: #2E3238; border-left: 6px solid #EB6834; padding-left: 20px; }
+
+table { font-size: 28px; color: #2E3238; width: 100%; }
+tr.head { background: #E8E6E0; }
+section.tint tr.head { background: #E0DED7; }
+
+.foot { position: absolute; left: 128px; bottom: 64px; width: 1664px; display: flex; justify-content: flex-end; }
+.foot .ft { font-size: 24px; color: #6B6F76; }
+section.dark .foot .ft { color: #9AA7BD; }
+
+.flow { display: flex; align-items: center; gap: 12px; }
+.node { background: #F1F0EC; border: 2px solid #E2E0DA; border-radius: 16px; padding: 24px 22px; display: flex; flex-direction: column; gap: 10px; }
+.flow > .node { width: 300px; height: 280px; justify-content: center; }
+.node .nt { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 32px; font-weight: 600; line-height: 1.15; color: #16181D; }
+.node .nb { font-size: 24px; line-height: 1.35; color: #5F636B; }
+.node .tag { font-size: 24px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #6B6F76; }
+.node.hl { background: #E8F0FB; border-color: #1F62B5; }
+.node.hl .tag { color: #1F62B5; }
+.node.alt { background: #FCFCFB; border: 2px dashed #B8461A; }
+.node.alt .tag { color: #B8461A; }
+.fork { display: flex; flex-direction: column; gap: 24px; width: 380px; height: 400px; }
+.fork .node { flex: 1; justify-content: center; }
+
+.cards.mini { gap: 24px; }
+.cards.mini .card { padding: 20px 24px; gap: 8px; }
+.cards.mini .card .body { font-size: 24px; line-height: 1.35; }
+.cards.mini .card.concept { flex: 1.6; background: #E8F0FB; }
+.cards.mini .card.concept .label { color: #1F62B5; }
+
+.stats { display: flex; flex-direction: column; gap: 16px; width: 640px; }
+.stat { background: #F1F0EC; border-radius: 16px; padding: 20px 28px; display: flex; flex-direction: column; gap: 6px; }
+.stat.key { background: #FBEDE6; }
+.stat .slabel { font-size: 24px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #5F636B; }
+.stat .nums { display: flex; gap: 48px; }
+.stat .num { display: flex; flex-direction: column; }
+.stat .v { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 60px; font-weight: 600; line-height: 1.05; color: #16181D; }
+.stat .v.blue { color: #1F62B5; }
+.stat .v.orange { color: #B8461A; }
+.stat .k { font-size: 24px; line-height: 1.3; color: #5F636B; }
+
+.reg { background: #F1F0EC; border-radius: 16px; padding: 28px 36px; display: flex; flex-direction: column; gap: 14px; }
+.reg.key { background: #FBEDE6; }
+.reg .slabel { font-size: 24px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #5F636B; }
+.reg .eq { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 36px; line-height: 1.3; color: #16181D; }
+.reg .eq .cb { color: #1F62B5; font-weight: 600; }
+.reg.key .eq .cb { color: #B8461A; }
+.reg .eq .cd { font-weight: 600; }
+.reg .groups { display: flex; gap: 120px; }
+.reg .nums { display: flex; gap: 48px; }
+.reg .num { display: flex; flex-direction: column; }
+.reg .v { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 60px; font-weight: 600; line-height: 1.05; color: #16181D; }
+.reg .v.blue { color: #1F62B5; }
+.reg .v.orange { color: #B8461A; }
+.reg .k { font-size: 24px; line-height: 1.3; color: #5F636B; }
+
+.eqrow { display: flex; align-items: flex-start; gap: 16px; }
+.term { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.term .eq { text-align: center; white-space: nowrap; }
+.term .v { text-align: center; }
+.term .tb { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 32px; line-height: 1.2; color: #5F636B; text-align: center; }
+.term .tb.blue { color: #1F62B5; }
+.term .tb.orange { color: #B8461A; }
+
+</style>
+</head>
+<body>
+<div id="stage">
+<section id="cover" class="dark" style="justify-content:center; gap:40px;">
+<p class="eyebrow"></p>
+<h1 style="width:1500px;">Disagreement or Low Forecasts?</h1>
+<h2 style="width:1500px; font-weight:500;">Challenging Machine Forecast Disagreement</h2>
+<p class="lead" style="width:1400px;">Replicating and testing Bali, Kelly, Mörke and Rahman, “Machine Forecast Disagreement” (Review of Financial Studies, forthcoming)</p>
+<p class="small">Jatin Lamba&nbsp;</p>
+
+</section>
+<section id="question">
+<p class="eyebrow">Part 1 · The paper</p>
+<h2>Does investor disagreement predict returns, measured for every stock?</h2>
+<div class="cards">
+<div class="card">
+<h3>Mechanism: Miller (1977)</h3>
+<p class="body">Shorting is costly, so pessimists stay out and prices reflect the optimists.&nbsp;<br><br>More disagreement means more overpricing and lower future returns.</p>
+</div>
+<div class="card">
+<h3>The Innovation</h3>
+<p class="body">Analyst dispersion covers few stocks.&nbsp;<br><br>Instead, train 100 machine-learning “investors” on different information and measure how much their return forecasts disagree.</p>
+</div>
+<div class="card">
+<h3>Headline</h3>
+<p class="body">The highest-disagreement decile underperforms the lowest by <b>1.14% a month</b>, value-weighted (t = 4.33), 1976–2022.</p>
+</div>
+</div>
+<div class="foot"><p class="ft pg">2</p></div>
+
+</section>
+<section id="construction" style="gap:40px;">
+<p class="eyebrow">Part 1 · Construction</p>
+<h2 style="flex:0 0 auto; font-family:'Space Grotesk', Arial, sans-serif; font-size:56px; font-weight:600; line-height:1.12; color:#16181d">Machine Forecast Disagreement (MFD)&nbsp;</h2>
+<div class="flow">
+<div class="node"><p class="nt">153 characteristics</p><p class="nb">Jensen-Kelly-Pedersen, ranked into [−1, 1] each month</p></div>
+<x-shape kind="arrow-right" style="background:#9A9EA6; width:36px; height:26px;"></x-shape>
+<div class="node"><p class="nt">100 “investors”</p><p style="flex:0 0 auto; font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35" class="nb">each a random forest on a random 76 of the 153 characteristics;&nbsp;<br>depth 3; 2,000 trees</p></div>
+<x-shape kind="arrow-right" style="background:#9A9EA6; width:36px; height:26px;"></x-shape>
+<div class="node"><p class="nt">100 forecasts</p><p class="nb">of next-month return, per stock, per month</p></div>
+<x-shape kind="arrow-right" style="background:#9A9EA6; width:36px; height:26px;"></x-shape>
+<div class="node hl" style="width:380px;"><p class="tag">Paper’s signal</p><p class="nt">MFD = their spread (SD)</p><p class="nb">Deciles: long low MFD, short high</p></div>
+</div>
+<div class="cards mini">
+<div class="card"><p class="label">Data · JKP (2023)</p><p class="body">Jensen-Kelly-Pedersen stock characteristics on WRDS, built from CRSP and Compustat: 153 published return signals, monthly from 1966.</p></div>
+<div class="card"><p class="label">Universe</p><p class="body">US common stocks on NYSE, AMEX and Nasdaq, price above $5, no financials or utilities: about 2,700 stocks a month.</p></div>
+<div class="card"><p class="label">Training</p><p class="body">10-year rolling window, refit yearly to predict next year;&nbsp;<br>5% of features and rows per tree.<br>Feature gaps filled with the month’s median (13% of values).&nbsp;</p></div>
+</div>
+<div class="foot"><p class="ft pg">3</p></div>
+
+</section>
+<section id="example" style="gap:28px;">
+<p class="eyebrow">Part 1 · An example</p>
+<h2>Same mean forecast, different disagreement</h2>
+<img src="img/04_example.png" alt="Histograms of the 100 investor forecasts for two stocks in December 2019. Both have a mean forecast of +0.94% per month; Stock A (lowest MFD decile) has MFD 0.06%, Stock B (highest MFD decile) has MFD 0.15%." style="width:1648.62px; height:739.87px; flex:0 0 auto">
+<div class="foot"><p class="ft pg">4</p></div>
+
+</section>
+<section id="headline" style="gap:24px;">
+<p class="eyebrow">Part 1 · Their evidence</p>
+<h2>Low-MFD stocks beat high-MFD stocks by about 1% a month</h2>
+<img src="img/05_headline.png" alt="Left: value-weighted next-month excess return by MFD decile, 1976–2022, falling from +0.91% (low) to −0.12% (high). Right: growth of $1 in the long lowest, short highest MFD decile strategy, log scale, rising to about 100 by 2008 and flat after; +1.02% per month 1976–2022, −0.88% per month 2023–2025." style="width:1664px; height:420px; object-fit:contain;">
+<div class="cards mini">
+<div class="card concept"><p class="label">Stock controlS</p><p class="body">Hold known stock predictors fixed (size, value, momentum, volatility, …) and ask whether MFD still predicts returns.</p></div>
+<div class="card"><p class="label">Factor models</p><p class="body">Six-factor alpha (Fama-French 5 + momentum): −0.63% a month (t = −3.5)</p></div>
+<div class="card"><p class="label">Paper’s 12 controls</p><p class="body">Fama-MacBeth slope −0.23 (t = −5.4)</p></div>
+<div class="card"><p class="label">Borrowing fees</p><p class="body">Alpha: −2.30% (high fee) vs −0.07% (low fee)</p></div>
+</div>
+<div class="foot"><p class="ft pg">5</p></div>
+
+</section>
+<section id="why" class="tint">
+<p class="eyebrow">Part 2 · The question</p>
+<h2>Is MFD a new signal, or the mean forecast in disguise?</h2>
+<div class="cards">
+<div class="card">
+<p class="label">1 · Where I started</p>
+<h3>Study the effect</h3>
+<p class="body">I rebuilt MFD and the spread is there: low-disagreement stocks beat high-disagreement stocks by about 1% a month.</p>
+</div>
+<div class="card">
+<p class="label">2 · The natural question</p>
+<h3>Two summaries, one source</h3>
+<p class="body">The same 100 forecasts also give a <b>mean forecast</b> (the forests’ own expected return).&nbsp;<br><br>MFD is their spread, the mean is their average.</p>
+</div>
+<div class="card">
+<p class="label">3 · First check</p>
+<h3>Not orthogonal</h3>
+<p class="body">Across stocks, MFD and the mean forecast have a correlation of <b>−0.49</b>.&nbsp;<br><br>Stocks the forests expect to do badly get the widest disagreement.</p>
+</div>
+</div>
+<p class="lead">So: how orthogonal is MFD to the mean forecast, and does it add any signal beyond it?&nbsp;<br>Surprisingly: None of the paper’s controls is the mean.</p>
+<div class="foot"><p class="ft pg">6</p></div>
+
+</section>
+<section id="objection" class="dark" style="justify-content:center; gap:44px;">
+<p class="eyebrow">Part 3 · The objection</p>
+<h2 style="font-size:64px; width:1550px;">MFD predicts returns only because it tracks the forests’ own mean forecast.&nbsp;<br><br>Hold that mean fixed and MFD has no predictive power.</h2>
+<p class="lead" style="width:1450px;">If disagreement were truly priced, it would survive that control. If MFD is a disguised low-return forecast, its slope goes to zero.</p>
+<p class="small" style="width:1450px;">Five tests, with pass/fail criteria fixed before I ran them (A4). The paper survives if MFD keeps |t| &gt; 2 once the mean is added.</p>
+<div class="foot"><p class="ft pg">7</p></div>
+
+</section>
+<section id="replication" style="gap:14px;">
+<p class="eyebrow">Test 1 · Rebuild</p>
+<h2>Next-month returns across MFD decile portfolios</h2>
+<img src="img/08_replication.png" alt="Bar chart of next-month returns by MFD decile, my replication next to the authors' published MFD, value- and equal-weighted. Returns fall from decile 1 to decile 10 in both, and the two bars in each decile are close." style="object-fit:contain;width:1664px;height:358px;box-sizing:border-box;flex:0 0 auto">
+<h3 style="font-size:26px;"><br>Decile 10 − 1 portfolio <span style="color:#5f636b"><span style="font-weight:400">(most minus least disagreement, % per month)</span></span></h3>
+<p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:28px; line-height:1.3; color:#16181D;"><span style="color:#5F636B;">Six-factor alpha, monthly time series:</span>  R₁₀ − R₁ = <b style="color:#B8461A;">α</b> + β₁·MKT + β₂·SMB + β₃·HML + β₄·RMW + β₅·CMA + β₆·MOM + ε</p>
+<div class="cards mini" style="gap:16px;">
+<div class="card" style="padding:14px 20px; gap:4px;"><p class="label">Value-weighted</p><p class="body" style="font-size:24px;">Mine <b>−1.02%</b> (t −4.0) · Authors <b>−1.09%</b> (t −4.3)</p><p class="body" style="font-size:24px;">Six-factor alpha: −0.61 vs −0.60</p></div>
+<div class="card" style="padding:14px 20px; gap:4px;"><p class="label">Equal-weighted</p><p class="body" style="font-size:24px;">Mine <b>−1.33%</b> (t −5.4) · Authors <b>−1.32%</b> (t −5.7)</p><p class="body" style="font-size:24px;">Six-factor alpha: −0.88 vs −0.88</p></div>
+</div>
+<p class="small">Full scale: the authors’ replication code, 100 investors × 2,000 trees, rerun on JKP data from WRDS, August 1976 to November 2025 (1.7 million stock-months).</p>
+<div class="foot"><p class="ft pg">8</p></div>
+
+</section>
+<section id="keyresult" style="gap:24px;">
+<p class="eyebrow">Test 2 · The key regression</p>
+<h2>Add mean forecast, and MFD’s slope goes to zero</h2>
+<div style="display:flex; flex-direction:column; gap:48px;">
+<div class="reg">
+<p class="slabel">Regression 1 · The paper’s: without the mean</p>
+<div class="eqrow">
+<div class="term"><p class="eq">Next-month stock return</p></div>
+<div class="term"><p class="eq">=</p></div>
+<div class="term"><p class="eq">a</p></div>
+<div class="term"><p class="eq">+</p></div>
+<div class="term"><p class="eq"><span class="cb">b × MFD</span></p><p class="v blue">−0.196</p><p class="tb blue">(−5.47)</p></div>
+<div class="term"><p class="eq">+</p></div>
+<div class="term"><p class="eq">c × Controls</p></div>
+<div class="term"><p class="eq">+ error</p></div>
+</div>
+</div>
+<div class="reg key">
+<p class="slabel">Regression 2 · Mine: add the mean forecast</p>
+<div class="eqrow">
+<div class="term"><p class="eq">Next-month stock return</p></div>
+<div class="term"><p class="eq">=</p></div>
+<div class="term"><p class="eq">a</p></div>
+<div class="term"><p class="eq">+</p></div>
+<div class="term"><p class="eq"><span class="cb">b × MFD</span></p><p class="v orange">−0.006</p><p class="tb orange">(−0.13)</p></div>
+<div class="term"><p class="eq">+</p></div>
+<div class="term"><p class="eq"><span class="cd">d × Mean forecast</span></p><p class="v">+0.47</p><p class="tb">(9.1)</p></div>
+<div class="term"><p class="eq">+</p></div>
+<div class="term"><p class="eq">c × Controls</p></div>
+<div class="term"><p class="eq">+ error</p></div>
+</div>
+</div>
+</div>
+<p class="note">t-statistics in brackets.&nbsp;<br>Controls: the paper’s 12 controls (beta, size, value, momentum, …).<br>Paper reports b = −0.23 (−5.36) on the authors’ own published MFD, regression 2 gives b = −0.02 (−0.40).</p>
+<div class="foot"><p class="ft pg">9</p></div>
+
+</section>
+<section id="doublesort" style="gap:20px;">
+<p class="eyebrow">Test 3 · Double sorts</p>
+<h2>Hold the mean fixed and MFD’s alpha vanishes on average</h2>
+<img src="img/10_doublesort.png" alt="Two heatmaps of next-month returns. Left: MFD quintiles within mean-forecast quintiles; the MFD Q5−Q1 six-factor alpha is −0.79 (t −4.3) in the lowest-mean column and near zero elsewhere, average −0.06 (t −0.4). Right: mean-forecast quintiles within MFD quintiles; the mean Q5−Q1 alpha is +0.85 to +1.73 in every column, average +1.28 (t 7.9)." style="width:1664px; height:580px; object-fit:contain;">
+<p class="small">Portfolios are equal-weighted. The exception is the lowest-mean column; Part 4 holds the mean fixed more tightly there. <b>Value-weighted, no MFD high-minus-low alpha is significant in any mean-forecast quintile, the lowest included.</b></p>
+<div class="foot"><p class="ft pg">10</p></div>
+
+</section>
+<section id="controls" style="gap:20px;">
+<p class="eyebrow">Test 4 · The paper’s robustness checks</p>
+<h2>The paper’s other evidence fails the same way</h2>
+<div style="display:flex; gap:32px;">
+<div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+<h3>Richer control sets</h3>
+<p class="small">t-stat on MFD, from no controls to all 153 characteristics + industry</p>
+<img src="img/11_controls.png" alt="Paired bars of the t-statistic on MFD under five control sets: none; size, book-to-market, momentum and reversal; the paper's 12, all 153, all 153 plus industry. MFD alone: −5.6, −6.3, −5.4, −6.7, −7.0. MFD plus the mean forecast: −0.5, −0.9, −0.1, −1.5, −1.9, all inside the not-significant band." style="width:816px; height:540px; object-fit:contain;">
+</div>
+<div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+<h3>Longer horizons</h3>
+<p class="small">MFD slope for returns 1 to 12 months ahead, paper’s 12 controls</p>
+<img src="img/11_controls_2.png" alt="Line chart of the MFD slope for returns 1 to 12 months ahead with shaded 95% intervals. MFD alone rises from −0.20 at one month to about −0.05 at twelve, below zero throughout; MFD plus the mean forecast stays near zero at every horizon with intervals covering zero." style="width:816px; height:540px; object-fit:contain;">
+</div>
+</div>
+<div class="foot"><p class="ft pg">11</p></div>
+
+</section>
+<section id="ridge" style="gap:20px;">
+<p class="eyebrow">Test 5 · A different investor model</p>
+<h2>Swap the forests for ridge: same result</h2>
+<p class="small" style="font-size:26px;">Same 100 investors, same random 76 of 153 characteristics, but each fits a ridge regression. Each model’s MFD is tested against its own mean forecast.</p>
+<div style="display:flex; gap:40px; align-items:center;">
+<img src="img/12_ridge.png" alt="Paired bars of the t-statistic on MFD, controlling for beta, size, book-to-market and momentum, with a grey band marking not significant. Random forest: −6.9 alone, −0.3 with its own mean forecast. Ridge: −4.7 alone, −1.7 with its own mean forecast, inside the band." style="width:964px; height:560px; object-fit:contain;">
+<div style="flex:1; display:flex; flex-direction:column; gap:24px;">
+<div class="card" style="padding:28px;"><p class="label">Controls</p><p class="body">The paper’s first spec, 4 controls: beta, size, book-to-market, momentum.</p></div>
+<div class="card" style="padding:28px;"><p class="label">Reading it</p><p class="body">Both models’ MFD looks priced on its own. Add that model’s own mean forecast and the slope goes to zero.</p></div>
+</div>
+</div>
+<div class="foot"><p class="ft pg">12</p></div>
+
+</section>
+<section id="econ-who" class="tint" style="gap:20px;">
+<p class="eyebrow">Part 4 · The economics · Which stocks forests disagree about</p>
+<h2 style="font-size:52px;">High-MFD stocks are the textbook anomaly short leg</h2>
+<img src="img/13_econ-who.png" alt="Bar chart of the highest MFD quintile's average percentile ranks, drawn from a baseline of 50 (the typical stock). Higher than the typical stock: idiosyncratic volatility 69, lottery-like MAX 67, market beta 59, illiquidity 57, asset growth 56. Lower: book-to-market 45, size 43, profitability 36, forests' mean forecast 30." style="object-fit:contain;transform:translate(-23px, -19px);width:1674px;height:436px;box-sizing:border-box;flex:0 0 auto">
+<div class="cards mini">
+<div class="card"><p class="label">1 · Typical stocks → agreement</p><p class="body">Many similar stocks to learn from, so every forest gives a similar answer.</p></div>
+<div class="card"><p class="label">2 · Extreme stocks → disagreement</p><p class="body">Few similar stocks, so which features a forest sees decides its answer.</p></div>
+</div>
+<p class="note"><b>The spread is mechanical, not a difference of opinion.</b><br><b>MFD measures how hard a stock is to model, not how much investors disagree.</b></p>
+<div class="foot"><p class="ft pg">13</p></div>
+
+</section>
+<section id="econ-where" style="gap:24px;">
+<p class="eyebrow">Part 4 · The corner that survives</p>
+<h2 style="font-size:52px;">What survives in the lowest mean forecast quantile is mean and dispersion, not Miller’s disagreement</h2>
+<div style="display:flex; gap:32px; align-items:stretch;">
+<div style="width:960px; display:flex; flex-direction:column; gap:0px;">
+<img src="img/14_econ-where.png" alt="Schematic in four groups, left to right: the lowest-forecast 20% of stocks cut into 1, 2, 4 and 5 equal slices, drawn side by side. In every slice a vertical dumbbell rises from the same baseline: an orange dot (high-MFD stocks) below a blue dot (low-MFD stocks), its length the gap in their average mean forecast. The forecast gap shrinks as the slices get finer: 26 bp, 12 bp, 6 bp, 4 bp." style="width:949px; height:470px; object-fit:contain;">
+</div>
+<div class="stat key" style="flex:1; justify-content:center; gap:12px;">
+<p class="slabel">The “optimists” aren’t optimistic</p>
+<p class="k" style="color:#2E3238;">Miller needs optimists who bid the price above fair value. For high-MFD stocks here:</p>
+<div class="nums"><div class="num"><p class="v orange">+0.07%</p><p class="k">most bullish forests</p></div><div class="num"><p class="v">+0.54%</p><p class="k">typical stock</p></div></div>
+<p class="k" style="color:#2E3238;">Even the most bullish forest expects less than a typical stock. No one is bidding the price up.</p>
+</div>
+</div>
+<p class="note" style="width:949px;transform:translate(0, -2px);box-sizing:border-box">The 'mean' gap between high and low MFD buckets reduces if we make the mean forecast buckets tighter.&nbsp;</p>
+<div class="foot"><p class="ft pg">14</p></div>
+
+</section>
+<section id="conclusion" class="dark" style="gap:40px;">
+<p class="eyebrow">Verdict and next steps</p>
+<h2 style="width:1600px;">MFD’s spread is mostly the forests’ own low forecast. For a typical stock, model dispersion adds nothing.</h2>
+<div class="cards" style="gap:24px;">
+<div class="card">
+<h3>Against the paper</h3>
+<p class="body">Its controls omit the forests’ own mean forecast.&nbsp;<br><br>Add it and MFD’s t falls from −5.5 to −0.1, and Miller’s optimist test fails.</p>
+</div>
+<div class="card">
+<h3>What I showed</h3>
+<p class="body">Given the mean forecast, MFD predicts nothing for 80% of stocks.&nbsp;<br><br>The rest is small, extreme stocks, where controls absorb it and even the “optimists” are bearish.</p>
+</div>
+<div class="card">
+<h3>What stays open</h3>
+<p class="body">In hard-to-model stocks, model dispersion may partly track real disagreement.&nbsp;<br><br>Testing it needs an outside measure: lending fees or analyst dispersion.</p>
+</div>
+</div>
+<div class="foot"><p class="ft pg">15</p></div>
+
+</section>
+<section id="appendix" class="dark" style="justify-content:center; gap:40px;">
+<p class="eyebrow">Appendix</p>
+<h1>Appendix</h1>
+<div style="display:flex; flex-direction:column; gap:10px;">
+<p class="lead">A1 · The data</p>
+<p class="lead">A2 · Miller’s own prediction</p>
+<p class="lead">A3 · Where disagreement lives</p>
+<p class="lead">A4 · Test plan, fixed before results</p>
+</div>
+<div class="foot"><p class="ft pg">16</p></div>
+
+</section>
+<section id="backup-data" class="tint" style="gap:28px;">
+<p class="eyebrow">Appendix A1 · The data</p>
+<h2>Jensen-Kelly-Pedersen stock characteristics</h2>
+<div style="display:flex; gap:48px; align-items:flex-start;">
+<table style="width:900px; font-size:24px;">
+<tr class="head"><th style="width:170px;">Item</th><th>Detail</th></tr>
+<tr><td><b>Source</b></td><td>Jensen, Kelly &amp; Pedersen (2023, <i>JF</i>) data on WRDS, from CRSP returns and Compustat accounting</td></tr>
+<tr><td><b>Coverage</b></td><td>US, monthly, Aug 1966 – Dec 2025; tests start Aug 1976</td></tr>
+<tr><td><b>Universe</b></td><td>Common stock on NYSE, AMEX, Nasdaq; price above $5; no financials (SIC 6) or utilities (SIC 49)</td></tr>
+<tr><td><b>Size</b></td><td>1.98M stock-months, 23,427 stocks; median 2,672 a month (range 1,634 – 4,631)</td></tr>
+<tr><td><b>Gaps</b></td><td>13% of values missing; median stock-month has 144 of 153; filled with the month’s median</td></tr>
+<tr><td><b>Scaling</b></td><td>Each characteristic ranked within the month into [−1, 1]</td></tr>
+<tr><td><b>Target</b></td><td>Next-month excess return, winsorised 1% / 99% each month</td></tr>
+</table>
+<table style="width:716px; font-size:24px;">
+<tr class="head"><th style="width:240px;">Group</th><th style="width:56px;">#</th><th>Examples</th></tr>
+<tr><td>Investment</td><td>32</td><td>asset growth, accruals</td></tr>
+<tr><td>Intangibles</td><td>30</td><td>R&amp;D, firm age, seasonality</td></tr>
+<tr><td>Trading frictions</td><td>27</td><td>size, beta, IVOL, turnover</td></tr>
+<tr><td>Profitability</td><td>22</td><td>ROE, gross profit, F-score</td></tr>
+<tr><td>Value</td><td>18</td><td>book-to-market, E/P</td></tr>
+<tr><td>New (JKP)</td><td>15</td><td>short momentum, MAX, quality</td></tr>
+<tr><td>Momentum</td><td>9</td><td>12-1 momentum, SUE</td></tr>
+</table>
+</div>
+<div class="foot"><p class="ft pg">17</p></div>
+
+</section>
+<section id="app-miller" style="gap:28px;">
+<p class="eyebrow">Appendix A2 · Miller’s own prediction</p>
+<h2>Miller says the optimists drive the effect. They don’t.</h2>
+<p style="font-size:28px;">If pessimists sit out because shorting is costly, prices reflect the optimists, so the <b>optimist spread</b> (80th percentile − median forecast) should carry the effect and the <b>pessimist spread</b> (median − 20th percentile) should not.</p>
+<table>
+<tr class="head"><th style="width:28%;">Regression</th><th style="width:24%;">Optimist spread</th><th style="width:24%;">Pessimist spread</th><th>Difference</th></tr>
+<tr><td>Paper’s 12 controls</td><td>−0.109 (t −4.86)</td><td>−0.077 (t −3.11)</td><td>−0.032 (t −1.07)</td></tr>
+<tr><td>+ mean forecast</td><td>−0.026 (t −0.95)</td><td>+0.003 (t 0.11)</td><td>−0.029 (t −0.92)</td></tr>
+</table>
+<p class="note">Both sides matter about equally without the mean, and neither matters with it. The optimist half of Miller’s prediction fails.</p>
+<p class="small"><b>The shorting-cost half is not tested:</b> I have no borrowing-fee data. A rough proxy, short interest (2006–2025), points the wrong way for Miller (effect where shorting is easy, t −2.1; none where hard, t +0.8), but I don’t lean on it.</p>
+<div class="foot"><p class="ft pg">18</p></div>
+
+</section>
+<section id="app-q1" style="gap:24px;">
+<p class="eyebrow">Appendix A3 · Where disagreement lives</p>
+<h2 style="font-size:52px;">Forests disagree most where they expect the worst returns</h2>
+<div style="display:flex; gap:48px; align-items:center;">
+<img src="img/19_app-q1.png" alt="5 by 5 heatmap: for each quintile of the forests' mean forecast (columns, lowest to highest), the percentage of its stocks in each MFD quintile (rows, most disagreement on top). Each column sums to 100%; 20% everywhere would mean no relation. The lowest mean quintile has 49% of its stocks in the top MFD quintile; the highest mean quintile has 38% in the bottom MFD quintile, giving a dark diagonal from top-left to bottom-right." style="width:900px; height:620px; object-fit:contain;">
+<div class="stat" style="width:716px; justify-content:center;"><p class="slabel" style="text-align:center">Share of stocks in the top MFD quintile</p><div class="nums" style="justify-content:center;"><div class="num"><p class="v orange" style="text-align:center">49%</p><p class="k" style="text-align:center">lowest-forecast quintile</p></div><div class="num"><p class="v blue" style="text-align:center">8%</p><p class="k" style="text-align:center">highest-forecast quintile</p></div></div><p class="k" style="text-align:center; padding-top:12px;">20% each if the two were unrelated.</p></div>
+</div>
+<div class="foot"><p class="ft pg">19</p></div>
+
+</section>
+<section id="testplan" style="gap:28px;">
+<p class="eyebrow">Appendix A4 · Test plan, fixed before results</p>
+<h2>Five tests, each with a result that would rescue the paper</h2>
+<table>
+<tr class="head"><th style="width:34%;">Test</th><th style="width:33%;">My objection predicts</th><th>Would rescue the paper</th></tr>
+<tr><td>1. Rebuild MFD at full scale</td><td>Gate: the spread reproduces</td><td>No reproduction, no claim either way</td></tr>
+<tr><td>2. Fama-MacBeth: MFD + mean forecast</td><td>MFD slope ≈ 0</td><td>MFD |t| &gt; 2 with the mean</td></tr>
+<tr><td>3. MFD sorts within mean quintiles</td><td>No spread on average</td><td>Spread in every quintile</td></tr>
+<tr><td>4. Richer controls, horizons 1–12 months</td><td>≈ 0 everywhere</td><td>Survives systematically</td></tr>
+<tr><td>5. Ridge investors instead of forests</td><td>≈ 0 against its own mean</td><td>Survives its own mean</td></tr>
+</table>
+<div class="foot"><p class="ft pg">20</p></div>
+
+</section>
+</div>
+<div id="hud">← → to navigate · <span id="pos"></span></div>
+<script>
+const slides = [...document.querySelectorAll('#stage > section')];
+let cur = Math.max(0, Math.min(slides.length - 1, (parseInt(location.hash.slice(1)) || 1) - 1));
+function fit() {
+  const s = Math.min(innerWidth / 1920, innerHeight / 1080);
+  document.getElementById('stage').style.transform = `translate(-50%, -50%) scale(${s})`;
+}
+function show(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  slides.forEach((el, j) => el.classList.toggle('on', j === cur));
+  document.getElementById('pos').textContent = `${cur + 1} / ${slides.length}`;
+  history.replaceState(null, '', '#' + (cur + 1));
+}
+addEventListener('keydown', e => {
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key)) show(cur + 1);
+  if (['ArrowLeft', 'PageUp'].includes(e.key)) show(cur - 1);
+  if (e.key === 'Home') show(0);
+  if (e.key === 'End') show(slides.length - 1);
+});
+addEventListener('click', e => show(cur + (e.clientX > innerWidth / 2 ? 1 : -1)));
+addEventListener('resize', fit);
+fit(); show(cur);
+</script>
+</body>
+</html>

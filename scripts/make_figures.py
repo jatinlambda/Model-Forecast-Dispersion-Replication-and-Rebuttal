@@ -339,6 +339,78 @@ def fig7_split():
         plt.close(fig)
 
 
+def fig7b_high_only():
+    """fig7b_high_mfd: characteristics of the highest MFD quintile only, drawn from the typical stock (50)."""
+    pr = pd.read_csv(RES / "economic/profile_by_mfd.csv", index_col=0)
+    names = {"IVOL": "Idiosyncratic\nvolatility", "MAX": "Lottery-like\n(MAX)", "BETA": "Market\nbeta",
+             "ILLIQ": "Illiquidity", "AG": "Asset\ngrowth", "BM": "Book-to-\nmarket", "SIZE": "Size",
+             "OP": "Profitability", "mean_forecast": "Forests'\nmean forecast"}
+    keys = sorted(names, key=lambda k: -pr.loc[5, k])
+    x = np.arange(len(keys))
+    hi = pr.loc[5, keys].values * 100
+    with plt.rc_context({"font.size": 13}):
+        fig, ax = plt.subplots(figsize=(14, 4.6))
+        ax.bar(x, hi - 50, bottom=50, width=0.55, color=C[1], edgecolor=SURF, label="Highest MFD quintile")
+        ax.axhline(50, color=INK2, lw=1.2)
+        ax.set_xticks(x, [names[k] for k in keys], fontsize=13)
+        ax.tick_params(axis="x", length=0)
+        ax.set_ylim(25, 75)
+        ax.set_ylabel("Percentile rank (50 = typical stock)")
+        ax.grid(axis="y", color=GRID, lw=0.8); ax.set_axisbelow(True)
+        n_up = int((hi > 50).sum())
+        ax.axvspan(n_up - 0.5, len(keys) - 0.5, color=GRID, alpha=0.35, lw=0, zorder=0)
+        ax.text((n_up - 1) / 2, 74, "Higher than the typical stock", ha="center", va="top", fontsize=12, color=INK, fontweight="bold")
+        ax.text((n_up + len(keys) - 1) / 2, 74, "Lower than the typical stock", ha="center", va="top", fontsize=12, color=INK, fontweight="bold")
+        ax.set_xlim(-0.6, len(keys) - 0.4)
+        ax.legend(loc="lower left", bbox_to_anchor=(0, 1.0), frameon=False)
+        fig.savefig(OUT / "fig7b_high_mfd.png", dpi=170, bbox_inches="tight")
+        plt.close(fig)
+
+
+def fig_q1_slices():
+    """fig_q1_slices: schematic of holding the mean tighter inside the lowest-forecast 20%.
+    Each column cuts the same 20% into k equal slices, drawn side by side; inside each slice a dumbbell
+    from a common baseline shows the measured average gap between the mean forecast of high-MFD
+    (orange, lower) and low-MFD (blue) stocks: 26, 12, 6, 4 bp, hard-coded from the within-quintile
+    results. Only the gap carries data; it is to scale.
+    If results/within_q1/gap_by_subbin.csv exists (columns K, sub, gap_bp), each slice's dumbbell
+    shows that slice's own gap instead of the average."""
+    cols = [(1, 26), (2, 12), (4, 6), (5, 4)]
+    per = {}
+    f = RES / "within_q1/gap_by_subbin.csv"
+    if f.exists():
+        g = pd.read_csv(f)
+        per = {(int(r.K), int(r.sub)): abs(r.gap_bp) for r in g.itertuples()}
+        cols = [(k, round(abs(g[g.K == k].avg_gap_bp.iloc[0]))) for k, _ in cols] if "avg_gap_bp" in g else cols
+    scale = 0.60 / 26  # box height per bp: the 26 bp gap spans 60% of the box
+    cw, base = 0.72, 0.18
+    with plt.rc_context({"font.size": 13}):
+        fig, ax = plt.subplots(figsize=(11, 4.6))
+        for i, (k, gap) in enumerate(cols):
+            w = cw / k
+            for s in range(k):
+                x = i - cw / 2 + s * w
+                ax.add_patch(plt.Rectangle((x + 0.006, 0), w - 0.012, 1,
+                                           color="#ecebe7" if s % 2 == 0 else "#e2e1dc", lw=0))
+                xc = x + w / 2
+                gs = per.get((k, s + 1), gap)  # sub-bins numbered 1..k from the lowest forecast
+                ax.plot([xc, xc], [base, base + gs * scale], color=INK2, lw=1.5, zorder=2)
+                ax.scatter([xc], [base], s=90, color=C[1], zorder=3, edgecolor=SURF, linewidth=1.5)
+                ax.scatter([xc], [base + gs * scale], s=90, color=C[0], zorder=3, edgecolor=SURF, linewidth=1.5)
+            ax.text(i, -0.06, f"{k} × {20 // k if 20 % k == 0 else 20 / k:g}%", ha="center", va="top", fontsize=14, color=INK)
+            ax.text(i, -0.17, "forecast gap", ha="center", va="top", fontsize=12, color=INK2)
+            ax.text(i, -0.26, f"{gap} bp", ha="center", va="top", fontsize=15, color=INK, fontweight="bold")
+        ax.set_xlim(-0.5, len(cols) - 0.5)
+        ax.set_ylim(-0.4, 1.02)
+        ax.axis("off")
+        handles = [Line2D([], [], marker="o", ls="", color=C[1], markersize=10, label="High-MFD stocks"),
+                   Line2D([], [], marker="o", ls="", color=C[0], markersize=10, label="Low-MFD stocks")]
+        ax.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.0, 1.0), ncol=2, frameon=False,
+                  title="Average mean forecast within each slice", title_fontsize=12, alignment="left")
+        fig.savefig(OUT / "fig_q1_slices.png", dpi=170, bbox_inches="tight")
+        plt.close(fig)
+
+
 def fig5_ridge_bars():
     """Slide version (no header): t-stat on MFD, alone vs + that model's own mean, forest vs ridge, spec (1)."""
     names = {"forest": "Random forest\n(paper)", "ridge": "Ridge"}

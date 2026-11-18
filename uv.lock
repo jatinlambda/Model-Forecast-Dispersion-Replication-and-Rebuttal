@@ -9,7 +9,7 @@ resolution-markers = [
 ]
 
 [[package]]
-name = "14-rfs-de"
+name = "mfd-replication-rebuttal"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

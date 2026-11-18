@@ -1,7 +1,7 @@
 [project]
-name = "14-rfs-de"
+name = "mfd-replication-rebuttal"
 version = "0.1.0"
-description = "Add your description here"
+description = "Replication and critique of Bali, Kelly, Moerke and Rahman, Machine Forecast Disagreement"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [

@@ -1,9 +1,0 @@
-50 blocks, 8 shards x 4 threads, up to 7 blocks each
-shard 0: 1976-08 .. --test-end 1983-07
-shard 1: 1983-08 .. --test-end 1990-07
-shard 2: 1990-08 .. --test-end 1997-07
-shard 3: 1997-08 .. --test-end 2004-07
-shard 4: 2004-08 .. --test-end 2011-07
-shard 5: 2011-08 .. --test-end 2018-07
-shard 6: 2018-08 .. --test-end 2025-07
-shard 7: 2025-08 .. end of data
